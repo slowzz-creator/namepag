@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enquete</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('https://wallpapercave.com/wp/wp7196410.jpg') no-repeat center center;
+            background-size: cover;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+        }
+
+        .question {
+            color: red;
+            font-size: 28px;
+            font-weight: bold;
+            animation: pulse 1s infinite;
+            margin-bottom: 20px;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+            100% { transform: scale(1); }
+        }
+
+        .button {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 20px;
+            border: 2px solid white;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            background-color: transparent;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .button:hover {
+            background-color: white;
+            color: black;
+        }
+
+        .button:active {
+            transform: scale(0.95);
+        }
+
+        #error-message, #love-message, #warning-message {
+            display: none;
+            margin-top: 20px;
+            font-size: 16px;
+            color: #f0f0f0;
+            background: rgba(0, 0, 0, 0.8);
+            padding: 15px;
+            border-radius: 10px;
+            line-height: 1.5;
+        }
+
+        #error-message {
+            border: 2px solid red;
+        }
+
+        #love-message {
+            border: 2px solid green;
+        }
+
+        #warning-message {
+            display: block;
+            border: 2px solid yellow;
+            background: rgba(255, 255, 0, 0.3);
+            color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="question">Você aceita namorar comigo?</div>
+        <button class="button" id="yes-button" onclick="acceptLove()">SIM, EU TE AMO!</button>
+        <button class="button" id="no-button" onclick="declineLove()">NÃO</button>
+        <div id="warning-message">Escolha uma opção acima!</div>
+        <div id="error-message">Você não tem escolha a não ser namorar comigo.</div>
+        <div id="love-message">Eu quero fazer você a mulher mais feliz do mundo, porque quando eu conheci você de verdade eu me apaixonei mais por você, e continuo me apaixonando cada vez mais por você a cada dia que passa. Você é a guria mais perfeita que eu já conheci, seu sorriso me apaixona, seus olhos me hipnotizam, sua voz me desestabiliza, EU TE AMO.</div>
+    </div>
+
+    <script>
+        function acceptLove() {
+            document.getElementById('love-message').style.display = 'block';
+            document.getElementById('error-message').style.display = 'none';
+            document.getElementById('warning-message').style.display = 'none';
+        }
+
+        function declineLove() {
+            document.getElementById('error-message').style.display = 'block';
+            document.getElementById('love-message').style.display = 'none';
+            document.getElementById('warning-message').style.display = 'none';
+        }
+
+        document.addEventListener('click', function(e) {
+            if (!e.target.matches('.button')) {
+                document.getElementById('warning-message').style.display = 'block';
+            }
+        });
+    </script>
+</body>
+</html>
